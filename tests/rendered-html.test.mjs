@@ -22,17 +22,20 @@ test("exports a complete, indexable personal site", async () => {
   assert.match(html, /hens and chicks/);
   assert.match(html, /hydroponic growing/);
   assert.match(html, /mailto:troysawyer@gmail\.com/);
+  assert.match(html, /rel="icon" href="\/icon\.png\?[^"]+"/);
   assert.match(html, /property="og:image"/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|Starter Project/);
 });
 
 test("exports required public assets", async () => {
-  const [socialCard, robots] = await Promise.all([
+  const [socialCard, favicon, robots] = await Promise.all([
     readFile(new URL("og.png", outputRoot)),
+    readFile(new URL("icon.png", outputRoot)),
     readFile(new URL("robots.txt", outputRoot), "utf8"),
   ]);
 
   assert.ok(socialCard.byteLength > 100_000);
+  assert.ok(favicon.byteLength > 10_000);
   assert.match(robots, /Allow:\s*\//);
   assert.match(robots, /Sitemap:\s*https:\/\/www\.troysawyer\.com\/sitemap\.xml/);
 });
