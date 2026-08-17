@@ -12,6 +12,15 @@ test("exports a complete, indexable personal site", async () => {
   assert.match(html, /Good systems make/);
   assert.match(html, /AgileIM/);
   assert.match(html, /EmailPointer/);
+  assert.match(html, /id="earlier"/);
+  assert.match(html, /Earlier chapters/);
+  assert.match(html, /Accolade Computers/);
+  assert.match(html, /classroom in Jakarta/);
+  assert.match(html, /href="#acreage"/);
+  assert.match(html, /id="acreage"/);
+  assert.match(html, /old chicken coop/);
+  assert.match(html, /hens and chicks/);
+  assert.match(html, /hydroponic growing/);
   assert.match(html, /mailto:troy\.sawyer@westernim\.ca/);
   assert.match(html, /property="og:image"/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|Starter Project/);
