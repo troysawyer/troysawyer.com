@@ -21,7 +21,7 @@ test("exports a complete, indexable personal site", async () => {
   assert.match(html, /old chicken coop/);
   assert.match(html, /hens and chicks/);
   assert.match(html, /hydroponic growing/);
-  assert.match(html, /mailto:troy\.sawyer@westernim\.ca/);
+  assert.match(html, /mailto:troysawyer@gmail\.com/);
   assert.match(html, /property="og:image"/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|Starter Project/);
 });

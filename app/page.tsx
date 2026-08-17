@@ -374,8 +374,8 @@ export default function Home() {
             Have a knotty problem? <em>Let&apos;s make it simpler.</em>
           </h2>
           <div className="contact-row">
-            <a className="email-link" href="mailto:troy.sawyer@westernim.ca">
-              troy.sawyer@westernim.ca <span aria-hidden="true">↗</span>
+            <a className="email-link" href="mailto:troysawyer@gmail.com">
+              troysawyer@gmail.com <span aria-hidden="true">↗</span>
             </a>
             <div className="social-links" aria-label="External profiles">
               <a
