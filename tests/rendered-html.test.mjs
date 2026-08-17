@@ -1,0 +1,29 @@
+import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+import test from "node:test";
+
+const outputRoot = new URL("../out/", import.meta.url);
+
+test("exports a complete, indexable personal site", async () => {
+  const html = await readFile(new URL("index.html", outputRoot), "utf8");
+
+  assert.match(html, /<title>Troy Sawyer/);
+  assert.match(html, /Software Developer &amp; Systems Thinker/);
+  assert.match(html, /Good systems make/);
+  assert.match(html, /AgileIM/);
+  assert.match(html, /EmailPointer/);
+  assert.match(html, /mailto:troy\.sawyer@westernim\.ca/);
+  assert.match(html, /property="og:image"/);
+  assert.doesNotMatch(html, /codex-preview|SkeletonPreview|Starter Project/);
+});
+
+test("exports required public assets", async () => {
+  const [socialCard, robots] = await Promise.all([
+    readFile(new URL("og.png", outputRoot)),
+    readFile(new URL("robots.txt", outputRoot), "utf8"),
+  ]);
+
+  assert.ok(socialCard.byteLength > 100_000);
+  assert.match(robots, /Allow:\s*\//);
+  assert.match(robots, /Sitemap:\s*https:\/\/www\.troysawyer\.com\/sitemap\.xml/);
+});
